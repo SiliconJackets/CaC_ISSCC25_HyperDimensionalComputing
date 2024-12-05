@@ -106,7 +106,7 @@ int main(int argc, char** argv) {
     // Initialize test
     Verilated::commandArgs(argc, argv);
     Verilated::traceEverOn(true);
-    sim_init();
+    sim_init(scene);
 
     // Read in test cases
     std::vector<int> test_cases;
