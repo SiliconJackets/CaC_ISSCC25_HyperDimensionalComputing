@@ -148,7 +148,7 @@ def run_single_case(vecSize, maxIter, chosen_color, chosen_shape, chosen_positio
 
 # Plotting function for shape, color, and position graphs
 def plot_graph(similarity_history, category, title, colors):
-    fig, ax = plt.subplots(figsize=(5, 3))
+    fig, ax = plt.subplots(figsize=(2, 1))
     ax.set_facecolor('#E6E6E6')  # Set gray background
     ax.set_axisbelow(True)       # Make gridlines appear below the plot lines
     ax.grid(color='white', linestyle='--', linewidth=0.7, alpha=0.7)  # Light white grid
