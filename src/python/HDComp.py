@@ -147,87 +147,23 @@ def run_single_case(vecSize, maxIter, chosen_color, chosen_shape, chosen_positio
     return history
 
 # Plotting function for shape, color, and position graphs
-# def plot_graph(similarity_history, category, title, colors):
-#     plt.figure(figsize=(6, 4))
-#     fig, ax = plt.subplots()
-#     ax.set_facecolor('#E6E6E6')  # Set gray background
-#     ax.set_axisbelow(True)       # Make gridlines appear below the plot lines
-#     ax.grid(color='white', linestyle='--', linewidth=0.7, alpha=0.7)  # Light white grid
+def plot_graph_sim(similarity_history, category, title, colors):
+    plt.figure(figsize=(6, 4))
+    fig, ax = plt.subplots()
+    ax.set_facecolor('#E6E6E6')  # Set gray background
+    ax.set_axisbelow(True)       # Make gridlines appear below the plot lines
+    ax.grid(color='white', linestyle='--', linewidth=0.7, alpha=0.7)  # Light white grid
 
-#     for key, color in colors.items():
-#         values = [entry[key] for entry in similarity_history[category]]
-#         ax.plot(range(len(values)), values, label=f"{key.capitalize()} Similarity", color=color, linewidth=3.0)
+    for key, color in colors.items():
+        values = [entry[key] for entry in similarity_history[category]]
+        ax.plot(range(len(values)), values, label=f"{key.capitalize()} Similarity", color=color, linewidth=3.0)
 
-#     ax.set_title(title, fontsize=18, fontweight='bold')
-#     ax.set_xlabel("Iterations", fontsize=14, fontweight='bold')
-#     ax.set_ylabel("Similarity", fontsize=14, fontweight='bold')
-#     ax.legend(fontsize=12)
-#     plt.tight_layout()
-#     plt.show()
-
-def plot_graph(similarity_history, category, title, colors, position='single'):
-    # Create the figure and axes with different layouts
-    if position == 'single':
-        plt.figure(figsize=(6, 4))
-        fig, ax = plt.subplots()
-        ax.set_facecolor('#E6E6E6')  # Set gray background
-        ax.set_axisbelow(True)       # Make gridlines appear below the plot lines
-        ax.grid(color='white', linestyle='--', linewidth=0.7, alpha=0.7)  # Light white grid
-        
-        for key, color in colors.items():
-            values = [entry[key] for entry in similarity_history[category]]
-            ax.plot(range(len(values)), values, label=f"{key.capitalize()} Similarity", color=color, linewidth=3.0)
-        
-        ax.set_title(title, fontsize=18, fontweight='bold')
-        ax.set_xlabel("Iterations", fontsize=14, fontweight='bold')
-        ax.set_ylabel("Similarity", fontsize=14, fontweight='bold')
-        ax.legend(fontsize=12)
-        plt.tight_layout()
-        plt.show()
-
-    elif position == 'multi':
-        # Create a 2x2 layout (2 rows, 2 columns) for multiple graphs
-        fig, axes = plt.subplots(2, 2, figsize=(12, 8))
-
-        # First plot on the top-left
-        axes[0, 0].set_facecolor('#E6E6E6')
-        axes[0, 0].set_axisbelow(True)
-        axes[0, 0].grid(color='white', linestyle='--', linewidth=0.7, alpha=0.7)
-        for key, color in colors.items():
-            values = [entry[key] for entry in similarity_history[category]]
-            axes[0, 0].plot(range(len(values)), values, label=f"{key.capitalize()} Similarity", color=color, linewidth=3.0)
-        axes[0, 0].set_title('Shape Similarity Evolution', fontsize=18, fontweight='bold')
-        axes[0, 0].set_xlabel("Iterations", fontsize=14, fontweight='bold')
-        axes[0, 0].set_ylabel("Similarity", fontsize=14, fontweight='bold')
-
-        # Second plot on the top-right
-        axes[0, 1].set_facecolor('#E6E6E6')
-        axes[0, 1].set_axisbelow(True)
-        axes[0, 1].grid(color='white', linestyle='--', linewidth=0.7, alpha=0.7)
-        for key, color in colors.items():
-            values = [entry[key] for entry in similarity_history[category]]
-            axes[0, 1].plot(range(len(values)), values, label=f"{key.capitalize()} Similarity", color=color, linewidth=3.0)
-        axes[0, 1].set_title('Color Similarity Evolution', fontsize=18, fontweight='bold')
-        axes[0, 1].set_xlabel("Iterations", fontsize=14, fontweight='bold')
-        axes[0, 1].set_ylabel("Similarity", fontsize=14, fontweight='bold')
-
-        # Third plot on the bottom-left (centered on bottom row)
-        axes[1, 0].set_facecolor('#E6E6E6')
-        axes[1, 0].set_axisbelow(True)
-        axes[1, 0].grid(color='white', linestyle='--', linewidth=0.7, alpha=0.7)
-        for key, color in colors.items():
-            values = [entry[key] for entry in similarity_history[category]]
-            axes[1, 0].plot(range(len(values)), values, label=f"{key.capitalize()} Similarity", color=color, linewidth=3.0)
-        axes[1, 0].set_title('Position Similarity Evolution', fontsize=18, fontweight='bold')
-        axes[1, 0].set_xlabel("Iterations", fontsize=14, fontweight='bold')
-        axes[1, 0].set_ylabel("Similarity", fontsize=14, fontweight='bold')
-
-        # Remove the empty space in the bottom-right corner
-        fig.delaxes(axes[1, 1])
-
-        # Adjust layout for better spacing
-        plt.tight_layout()
-        plt.show()
+    ax.set_title(title, fontsize=18, fontweight='bold')
+    ax.set_xlabel("Iterations", fontsize=14, fontweight='bold')
+    ax.set_ylabel("Similarity", fontsize=14, fontweight='bold')
+    ax.legend(fontsize=12)
+    plt.tight_layout()
+    plt.show()
 
 # Example: Generate similarity histories and plots
 if __name__ == '__main__':
