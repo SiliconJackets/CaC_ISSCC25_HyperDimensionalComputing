@@ -176,13 +176,13 @@ if __name__ == '__main__':
     history = run_single_case(vecSize, maxIter, chosen_color, chosen_shape, chosen_position)
 
     # Plot Shape Similarities
-    plot_graph(history, category='shape', title="Shape Similarity Evolution (Triangle, Circle, Square)",
+    plot_graph_sim(history, category='shape', title="Shape Similarity Evolution (Triangle, Circle, Square)",
             colors={'triangle': 'blue', 'circle': 'green', 'square': 'red'})
 
     # Plot Color Similarities
-    plot_graph(history, category='color', title="Color Similarity Evolution (Red, Blue, Green)",
+    plot_graph_sim(history, category='color', title="Color Similarity Evolution (Red, Blue, Green)",
             colors={'red': 'red', 'blue': 'blue', 'green': 'green'})
 
     # Plot Position Similarities
-    plot_graph(history, category='position', title="Position Similarity Evolution (Top Left, Top Right, Bottom Left, Bottom Right)",
+    plot_graph_sim(history, category='position', title="Position Similarity Evolution (Top Left, Top Right, Bottom Left, Bottom Right)",
             colors={'topleft': 'blue', 'topright': 'green', 'bottomleft': 'red', 'bottomright': 'magenta'})
