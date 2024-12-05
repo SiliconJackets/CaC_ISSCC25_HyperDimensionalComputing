@@ -34,11 +34,14 @@ def resonatorNet(color, shape, position, s, XXt, YYt, ZZt, Xt, Yt, Zt, red, blue
     settled = [0] * 3
 
     similarity_history = {'color': [], 'shape': [], 'position': []}
-
+    settled = [0] * 3
     for i in range(maxIter): #iterate until convergence is reached or maximum iterations reached
-        xHatn = s * yHat * zHat #binding operations
-        yHatn = s * xHat * zHat
-        zHatn = s * xHat * yHat
+        if settled[0] == 0:
+            xHatn = s * yHat * zHat  # binding operations
+        if settled[1] == 0:
+            yHatn = s * xHat * zHat
+        if settled[2] == 0:
+            zHatn = s * xHat * yHat
         #if(settled[0] == 0): #if xHat has settled do not calculate new value
         xHat = np.matmul(XXt, xHatn)
         xHat[xHat>=0] = 1
@@ -71,7 +74,6 @@ def resonatorNet(color, shape, position, s, XXt, YYt, ZZt, Xt, Yt, Zt, red, blue
             'bottomright': np.mean(bottomright == zHat),
         })
 
-        settled = [0] * 3
         if np.array_equal(xHat, xHatn): #check for convergence of xHat
             settled[0] = 1
         if np.array_equal(yHat, yHatn): #check for convergence of yHat
