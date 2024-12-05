@@ -39,7 +39,7 @@ void reset(int n) {
 }
 
 // Function to initialize simulation
-void sim_init() {
+void sim_init(uint32_t scene) {
 
 	trace       = new VerilatedVcdC; 
 	top         = new Vres_net_pkg;
@@ -47,7 +47,7 @@ void sim_init() {
 	trace->open("dump.vcd");    // Open VCD file for writing waveform
 
     top->i_init = 0;             // Initialize readA signal
-    top->scene_in = 969473173;             // Initialize readB signal
+    top->scene_in = scene;            // Initialize readB signal
     top->color_init = 2198453636;
     top->shape_init = 3215788617;
     top->position_init = 338248138;
@@ -94,7 +94,15 @@ void readNumbers(const std::string& filename, std::vector<int>& numbers) {
 
 // Test main
 int main(int argc, char** argv) {
-    
+
+    uint32_t scene;
+    scene = 969473173;
+
+    if (argc > 1) {
+      char* endptr;
+      unsigned long int value = std::strtoul(argv[1], &endptr, 10);
+      scene = static_cast<uint32_t>(value);
+    }
     // Initialize test
     Verilated::commandArgs(argc, argv);
     Verilated::traceEverOn(true);
